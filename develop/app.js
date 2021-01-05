@@ -89,6 +89,21 @@ function teamGenerator() {
         }
     })
 
+    createEngineer = () => {
+        return inquirer
+            .prompt([...staffInput, ...engineerInput])
+            .then(({ name, id, email, github }) => {
+            let engineer = new Engineer(name, id, email, github);
+        if (name === "" && id === "" && email === "" && github === "") {
+            console.log("Incorrect entry. Try again.");
+            createEngineer();
+        } else {
+            employees.push(engineer);
+            teamGenerator();
+        };
+    });
+}
+
 // After you have your html, you're now ready to create an HTML file using the HTML
 // returned from the `render` function. Now write it to a file named `team.html` in the
 // `output` folder. You can use the variable `outputPath` above target this location.
