@@ -104,6 +104,21 @@ function teamGenerator() {
     });
 }
 
+createIntern = () => {
+    return inquirer
+        .prompt([...staffInput, ...internInput])
+        .then(({ name, id, email, school }) => {
+        let intern = new Intern(name, id, email, school);
+    if (name === "" && id === "" && email === "" && school === "") {
+        console.log("Incorrect entry. Try again.");
+        createIntern();
+    } else {
+        employees.push(intern);
+        teamGenerator();
+        };
+});
+}
+
 // After you have your html, you're now ready to create an HTML file using the HTML
 // returned from the `render` function. Now write it to a file named `team.html` in the
 // `output` folder. You can use the variable `outputPath` above target this location.
