@@ -32,4 +32,4 @@ Email: ericscottober@gmail.com
 
 ## Walkthrough
   
-![]()
+![](team-profile-generator.gif)
