@@ -102,22 +102,38 @@ function teamGenerator() {
             teamGenerator();
         };
     });
-}
+    }
 
-createIntern = () => {
-    return inquirer
-        .prompt([...staffInput, ...internInput])
-        .then(({ name, id, email, school }) => {
-        let intern = new Intern(name, id, email, school);
-    if (name === "" && id === "" && email === "" && school === "") {
-        console.log("Incorrect entry. Try again.");
-        createIntern();
-    } else {
-        employees.push(intern);
-        teamGenerator();
-        };
-});
-}
+    createIntern = () => {
+        return inquirer
+            .prompt([...staffInput, ...internInput])
+            .then(({ name, id, email, school }) => {
+            let intern = new Intern(name, id, email, school);
+        if (name === "" && id === "" && email === "" && school === "") {
+            console.log("Incorrect entry. Try again.");
+            createIntern();
+        } else {
+            employees.push(intern);
+            teamGenerator();
+            };
+    });
+    }
+
+    createManager = () => {
+        return inquirer
+            .prompt([...staffInput, ...managerInput])
+            .then(({ name, id, email, officeNumber }) => {
+            let manager = new Manager(name, id, email, officeNumber);
+        if (name === "" && id === "" && email === "" && officeNumber === "" && (officeNumber)) {
+            console.log("Incorrect entry. Try again.");
+            createManager();
+        } else {
+            employees.push(manager);
+            teamGenerator();
+            };
+    });
+    }
+
 
 // After you have your html, you're now ready to create an HTML file using the HTML
 // returned from the `render` function. Now write it to a file named `team.html` in the
