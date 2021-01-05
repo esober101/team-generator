@@ -133,7 +133,18 @@ function teamGenerator() {
             };
     });
     }
+    
+    writeToFile = (filename, data) => {
+        fs.writeFile(filename, data, err => {
+        if (err) {
+            return console.log(err);
+        }
+        console.log("Your Team HTML has been created.");
+    })
+    }
+}
 
+teamGenerator();
 
 // After you have your html, you're now ready to create an HTML file using the HTML
 // returned from the `render` function. Now write it to a file named `team.html` in the
